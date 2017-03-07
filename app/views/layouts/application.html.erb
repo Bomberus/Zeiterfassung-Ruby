@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Zeiterfassung</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+<script>
+        $('canvas').constellation({
+            star: {
+                width: 3
+            },
+            line: {
+                color: 'rgba(255, 62, 0, 0.9)'
+            },
+            radius: 250
+        });
+</script>
+</body>
+</html>

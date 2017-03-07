@@ -1,0 +1,45 @@
+html,
+body {
+  height: 100%;
+}
+html {
+  display: table;
+  margin: auto;
+}
+body {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.margin {
+  margin: 0 !important;
+}
+
+.login-form {
+  width: 300px;
+}
+
+.login-text {
+  margin-top: -6px;
+  margin-left: -6px !important;
+}
+
+.input-field .prefix.active{
+  color:orange !important;
+}
+
+.red:checked + label:before {
+  border-right: 2px solid orange; /* You need to change the colour here */
+  border-bottom: 2px solid orange; /* And here */  }
+
+input[type=text]:focus:not([readonly]) + label,
+input[type=password]:focus:not([readonly]) + label,
+input[type=email]:focus:not([readonly]) + label{
+  color: orange; }
+
+input[type=text]:focus:not([readonly]),
+input[type=password]:focus:not([readonly]),
+input[type=email]:focus:not([readonly]){
+  border-bottom: 1px solid orange;
+  box-shadow: 0 1px 0 0 orange;
+}
