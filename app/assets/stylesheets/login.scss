@@ -35,7 +35,7 @@ body {
 input[type=text]:focus:not([readonly]) + label,
 input[type=password]:focus:not([readonly]) + label,
 input[type=email]:focus:not([readonly]) + label{
-  color: orange; }
+  color: orange!important; }
 
 input[type=text]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]),
