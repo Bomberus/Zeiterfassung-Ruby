@@ -12,10 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require materialize
+//= require materialize-sprockets
+//= require materialize-form
 //= require turbolinks
 //= require zepto.min
 //= require_tree .
+$(document).on('nested:fieldAdded', function(event){
+    window.materializeForm.init()
+});
+
 $('canvas').constellation({
     star: {
         width: 3

@@ -1,0 +1,71 @@
+$color: #ffab77;
+$color-1: #ff9843;
+$color-2: #ff894d;
+$color-bg: lighten($color, 15);
+$size: 400px;
+
+#clock {
+  box-sizing: border-box;
+  width: $size;
+  height: $size;
+  border: 35px solid $color;;
+  border-radius: 50%;
+  margin: 0 auto;
+  transform: rotate(-90deg);
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: black;
+    border: 12px solid $color;
+    border-radius: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+#hours, #minutes, #seconds{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  &:after, &:after, &:after {
+    content: "";
+    display: block;
+    margin: 50% 50%;
+    width: 50%;
+    transform-origin: left top;
+    animation: clock linear infinite;
+  }
+}
+
+#hours:after {
+  width: 30%;
+  outline: 8px solid $color;
+  animation-duration: 86400s;
+}
+
+#minutes:after {
+  width: 40%;
+  outline: 4px solid $color-1;
+  animation-duration: 3600s;
+}
+
+#seconds:after {
+  width: 48%;
+  outline: 2px solid $color-2;
+  animation-duration: 60s;
+}
+
+@keyframes clock {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

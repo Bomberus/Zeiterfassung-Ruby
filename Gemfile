@@ -31,9 +31,11 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Unicorn as the app server
 gem 'slim-rails'
 gem 'unicorn'
-gem 'rails-assets-materialize', source: 'https://rails-assets.org'
+gem 'materialize-sass'
+gem 'materialize-form'
 gem 'safe_attributes'
 gem 'material_icons'
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
