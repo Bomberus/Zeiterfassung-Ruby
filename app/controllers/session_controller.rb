@@ -1,6 +1,10 @@
 class SessionController < ApplicationController
   def new
-    @user = User.new
+    if logged_in?
+      redirect_to "/users/show"
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -8,7 +12,7 @@ class SessionController < ApplicationController
     if @user
       session[:user] = @user.id
       flash[:notice] = 'Login Successful'
-      redirect_to root_path
+      redirect_to user_path(:id => @user.id)
     else
       @user = User.new
       flash[:error] = 'Wrong Name or Password'

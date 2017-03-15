@@ -36,6 +36,7 @@ gem 'materialize-form'
 gem 'safe_attributes'
 gem 'material_icons'
 gem 'simple_form'
+gem 'toastr-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

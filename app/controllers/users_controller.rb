@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_filter :authenticate!, :only => [:edit, :update, :show, :destroy]
+
+  def index
+    redirect_to new_user_path
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
@@ -53,12 +59,13 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+    session.clear
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(session[:user])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
