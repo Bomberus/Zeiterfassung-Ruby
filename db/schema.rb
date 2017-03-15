@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303134009) do
+ActiveRecord::Schema.define(version: 20170315201056) do
+
+  create_table "time_tickets", force: :cascade do |t|
+    t.datetime "arrival"
+    t.datetime "departure"
+    t.date     "date"
+    t.boolean  "is_finished"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"

@@ -1,0 +1,12 @@
+ul class="collection" style="border:none; overflow-y:auto; height:50vh"
+  - @user.time_tickets.each do |time_ticket|
+    li class="collection-item"
+      span class="title"
+        = time_ticket.date
+      p
+        = time_ticket.arrival
+        br
+        = time_ticket.departure
+        br
+        = time_ticket.work_time
+

@@ -2,16 +2,23 @@
 = stylesheet_link_tag 'login'
 = javascript_include_tag 'clock'
 
-h1 class="center white-text" TimeScribble
-#clock
-  #hours
-  #minutes
-  #seconds
-h3 class="white-text" because we want to know how long you work
-a class="left black-text orange btn" href="/users/new"
-  | Registrieren
-  i class="left material-icons" cloud
-a class="right black-text orange btn" href="/login"
-  | Login
-  i class="left material-icons" lock open
+- if logged_in?
+  - @user = User.find(session[:user])
+  == render :template => 'users/_navbar'
+
+div class="container"
+  h1 class="center white-text" TimeScribble
+  #clock
+    #hours
+    #minutes
+    #seconds
+  h3 class="center-align white-text" because we want to know how long you work
+
+  - if !logged_in?
+    a class="left black-text orange btn" href="/users/new"
+      | Registrieren
+      i class="left material-icons" cloud
+    a class="right black-text orange btn" href="/login"
+      | Login
+      i class="left material-icons" lock open
 canvas class="grey darken-4"

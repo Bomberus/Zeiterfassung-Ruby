@@ -1,1 +1,18 @@
+= stylesheet_link_tag 'flipclock'
+= javascript_include_tag 'flipclock.min'
+
 == render 'navbar'
+h3 class="white-text center-align" Time at work:
+.clock style="width: 650px; margin: 0 auto"
+.container
+  h3 class="white-text center-align" History:
+  == render 'timetable'
+
+- if @user.time_tickets.last.present? && !@user.time_tickets.last.is_finished
+  javascript:
+    var time_at_work = #{@user.time_tickets.last.work_time};
+    var clock = $('.clock').FlipClock(time_at_work, {
+      clockFace: 'DailyCounter'
+    });
+
+canvas class="grey darken-4"

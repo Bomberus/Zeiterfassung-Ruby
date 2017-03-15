@@ -12,3 +12,5 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( clock.js )
 Rails.application.config.assets.precompile += %w( clock.scss )
 Rails.application.config.assets.precompile += %w( login.scss )
+Rails.application.config.assets.precompile += %w( flipclock.css )
+Rails.application.config.assets.precompile += %w( flipclock.min.js )

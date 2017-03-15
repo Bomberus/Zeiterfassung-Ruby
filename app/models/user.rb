@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :time_tickets
   has_secure_password
   validates_confirmation_of :password
 

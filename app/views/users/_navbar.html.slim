@@ -1,11 +1,31 @@
 nav
-  div class="nav-wrapper"
-    a href="#" class="brand-logo"
+  div class="nav-wrapper orange"
+    a href="/users" class="brand-logo black-text"
       = 'Welcome ' + @user.name
-    ul id="nav-mobile" class="right hide-on-med-and-down"
-      li
-        = link_to 'Edit Profile', edit_user_path(@user)
-      li
-        = link_to 'Delete Profile',   @user,  method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }
-      li
-        = link_to 'Delete Profile', login_path ,  method: :delete, data: { confirm: 'Are you sure you want to logout?' }
+    a href="#" data-activates="mobile-demo" class="button-collapse"
+      i class="material-icons" menu
+    ul class="right hide-on-med-and-down"
+      == render 'users/navbar_menu'
+    ul class="side-nav" id="mobile-demo"
+      == render 'users/navbar_menu'
+
+    - if logged_in?
+      div class="fixed-action-btn toolbar"
+        a class="btn-floating btn-large red"
+          i class="large material-icons" mode_edit
+        ul
+          li class="waves-effect waves-light"
+            = link_to add_arrival_path, method: :post do
+              | Angekommen
+              i class="left material-icons" input
+              end
+
+          li class="waves-effect waves-light"
+            = link_to add_departure_path, method: :post do
+              | Feierabend
+              i class="right material-icons" time_to_leave
+
+javascript:
+  $(document).ready(function () {
+      $(".button-collapse").sideNav();
+  });

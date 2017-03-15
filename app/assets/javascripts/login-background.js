@@ -35,7 +35,7 @@ if (!window.requestAnimationFrame) {
                 width: window.innerWidth,
                 height: window.innerHeight,
                 velocity: 0.1,
-                length: 200,
+                length: Math.round(window.innerWidth / 10),
                 distance: 120,
                 radius: 150,
                 stars: []
@@ -172,7 +172,7 @@ if (!window.requestAnimationFrame) {
             this.setContext();
             this.setInitialPosition();
             this.loop(this.createStars);
-            this.bind();
+            //this.bind();
         };
     }
 

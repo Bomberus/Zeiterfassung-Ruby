@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:add_arrival, :add_departure, :show, :edit, :update, :destroy]
 
-  before_filter :authenticate!, :only => [:edit, :update, :show, :destroy]
+  before_filter :authenticate!, :only => [:add_arrival, :add_departure, :edit, :update, :show, :destroy]
 
   def index
-    redirect_to new_user_path
+    if logged_in?
+      set_user
+      redirect_to @user
+    else
+      redirect_to new_user_path
+    end
   end
 
   # GET /users/1
@@ -28,7 +33,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to login_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -60,6 +65,42 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
     session.clear
+  end
+
+  def add_arrival
+    time = Time.now
+    ticket = @user.time_tickets.new
+    ticket.arrival = time
+    ticket.date = time
+    ticket.departure = time
+    ticket.is_finished = false
+
+    respond_to do |format|
+      if ticket.save
+        format.html { redirect_to :back, notice: 'Arrival Date was successfully logged.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def add_departure
+    time = Time.now
+    ticket = @user.time_tickets.last
+    ticket.departure = time
+    ticket.is_finished = true
+
+    respond_to do |format|
+      if ticket.save
+        format.html { redirect_to @user, notice: 'Departure Date was successfully logged.' }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

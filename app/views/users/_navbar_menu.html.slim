@@ -1,0 +1,8 @@
+li
+  = link_to 'Homepage', root_path
+li
+  = link_to 'Edit Profile', edit_user_path(@user)
+li
+  = link_to 'Delete Profile',   @user,  method: :delete, data: { confirm: 'Are you sure you want to delete your account?' }
+li
+  = link_to 'Logout', login_path ,  method: :delete, data: { confirm: 'Are you sure you want to logout?' }
